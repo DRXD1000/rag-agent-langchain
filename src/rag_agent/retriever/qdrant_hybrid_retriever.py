@@ -1,3 +1,5 @@
+"""Qdrant Hybrid Retriever."""
+
 from langchain_qdrant import QdrantVectorStore, RetrievalMode
 from qdrant_client import QdrantClient
 

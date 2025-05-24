@@ -1,3 +1,5 @@
+"""Models."""
+
 from typing import Annotated, TypedDict
 
 from langchain_core.documents import Document

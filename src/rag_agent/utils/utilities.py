@@ -48,7 +48,7 @@ def detect_lang(text: str) -> str:
 
     """
     result = detector.detect(text, low_memory=False)
-    return langcodes.get(result).language_name()
+    return str(langcodes.get(result).language_name())
 
 
 def get_chat_history(messages: Sequence[BaseMessage]) -> Sequence[BaseMessage]:
