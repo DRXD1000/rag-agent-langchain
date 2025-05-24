@@ -38,3 +38,35 @@ repos:
       hooks:
           - id: pyupgrade
             args: [--py310-plus]
+
+    - repo: https://github.com/tcort/markdown-link-check
+      rev: v3.12.2
+      hooks:
+        - id: markdown-link-check
+          args: [-q]
+
+    - repo: https://github.com/shellcheck-py/shellcheck-py
+      rev: v0.9.0.6
+      hooks:
+        - id: shellcheck
+          name: shellcheck
+          args: ["--severity=warning"]
+          stages: [manual]
+
+    - repo: https://github.com/sirosen/check-jsonschema
+      rev: 0.29.4
+      hooks:
+        - id: check-github-workflows
+          args: ["--verbose"]
+
+    - repo: https://github.com/codespell-project/codespell
+      rev: "v2.2.6"
+      hooks:
+      - id: codespell
+        args: ["-L", "nin"]
+        stages: [manual]
+
+    -   repo: https://github.com/pre-commit/mirrors-mypy
+        rev: '1.15.0'  # Use the sha / tag you want to point at
+        hooks:
+        -   id: mypy
