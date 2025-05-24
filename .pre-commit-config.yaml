@@ -1,16 +1,6 @@
 # # See https://pre-commit.com for more information
 # # See https://pre-commit.com/hooks.html for more hooks
 repos:
-    - repo: https://github.com/astral-sh/ruff-pre-commit
-      # Ruff version.
-      rev: v0.11.7
-      hooks:
-          # Run the linter.
-          - id: ruff
-            args: [--fix]
-          # Run the formatter.
-          - id: ruff-format
-
     - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v5.0.0
       hooks:
@@ -24,6 +14,16 @@ repos:
           - id: check-ast
           - id: check-docstring-first
           - id: detect-private-key
+
+    - repo: https://github.com/astral-sh/ruff-pre-commit
+      # Ruff version.
+      rev: v0.11.7
+      hooks:
+          # Run the linter.
+          - id: ruff
+            args: [--fix]
+          # Run the formatter.
+          - id: ruff-format
 
     - repo: https://github.com/adamchainz/blacken-docs
       rev: 1.19.0 # replace with latest tag on GitHub
@@ -67,6 +67,12 @@ repos:
         stages: [manual]
 
     -   repo: https://github.com/pre-commit/mirrors-mypy
-        rev: '1.15.0'  # Use the sha / tag you want to point at
+        rev: v1.15.0  # Use the sha / tag you want to point at
         hooks:
         -   id: mypy
+
+    - repo: https://github.com/astral-sh/uv-pre-commit
+      # uv version.
+      rev: 0.7.8
+      hooks:
+        - id: uv-lock

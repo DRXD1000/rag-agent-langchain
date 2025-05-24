@@ -137,3 +137,6 @@ htmlcov/
 vector_db/
 reports.xlsx
 phoenix_data/
+
+# Project
+/local
