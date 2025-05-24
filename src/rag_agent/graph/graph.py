@@ -68,7 +68,4 @@ def reranking(state: AgentState, limit: int = 4) -> AgentState:
 
     best_indices = np.argsort(scores)[-limit:][::-1]
 
-
-
-
     return {"documents": [state["documents"][idx] for idx in best_indices]}
