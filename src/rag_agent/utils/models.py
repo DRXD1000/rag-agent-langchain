@@ -10,5 +10,5 @@ class AgentState(TypedDict):
 
     query: str
     documents: list[Document]
-    messages: Annotated[list[BaseMessage],add_messages]
+    messages: Annotated[list[BaseMessage], add_messages]
     refined_query: str

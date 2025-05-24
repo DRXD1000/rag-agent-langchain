@@ -1,32 +1,21 @@
 """Utility module."""
 
-import uuid
 from collections.abc import Sequence
-from pathlib import Path
-from fast_langdetect import detect, detect_multilingual, LangDetector, LangDetectConfig, DetectError
+
+import langcodes
+from fast_langdetect import LangDetectConfig, LangDetector
+from langchain_core.documents import Document
 from langchain_core.messages import (
     AIMessage,
     BaseMessage,
     HumanMessage,
-    convert_to_messages,
 )
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.prompts import (
-    ChatPromptTemplate,
-    PromptTemplate,
-)
-from langchain_core.documents import Document
-
-import logging
-import langcodes
 
 config = LangDetectConfig(
     cache_dir="/custom/cache/path",  # Custom model cache directory
-    allow_fallback=True             # Enable fallback to small model if large model fails
+    allow_fallback=True,  # Enable fallback to small model if large model fails
 )
 detector = LangDetector(config)
-
-
 
 
 def format_docs_for_citations(docs: Sequence[Document]) -> str:
@@ -48,20 +37,19 @@ def format_docs_for_citations(docs: Sequence[Document]) -> str:
     return "\n".join(formatted_docs)
 
 
-
-def detect_lang(text:str) -> str:
+def detect_lang(text: str) -> str:
     """Detect the language of the input text.
 
     Args:
         text (str): The input text to analyze
 
     Returns:
-        str: The name of the Language. 
+        str: The name of the Language.
+
     """
-
-
-    result =  detector.detect(text, low_memory=False)
+    result = detector.detect(text, low_memory=False)
     return langcodes.get(result).language_name()
+
 
 def get_chat_history(messages: Sequence[BaseMessage]) -> Sequence[BaseMessage]:
     """Append the chat history to the messages.
