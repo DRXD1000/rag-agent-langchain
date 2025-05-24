@@ -13,9 +13,11 @@ dependencies = [
     "langchain-qdrant>=0.2.0",
     "langcodes>=3.5.0",
     "langgraph>=0.4.7",
+    "numpy>=2.0.2",
     "ollama>=0.4.8",
     "torch>=2.7.0",
     "tqdm>=4.67.1",
+    "transformers==4.50", # pinned due to https://github.com/FlagOpen/FlagEmbedding/issues/1455
 ]
 
 [tool.mypy]
